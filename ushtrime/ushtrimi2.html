@@ -12,6 +12,48 @@
 5. In the first section, use the `picture` tag to display an image. Provide multiple sources with different resolutions for better responsiveness. 
 6. In the second section, create a list of bookmarks related to your favourite topics. Each bookmark should link to a specific section within the same webpage.</p>
 
+    <!-- Header -->
+    <header>
+        <h1>My Photo Gallery</h1>
+        <nav>
+            <a href="#home">Home</a> |
+            <a href="#gallery">Gallery</a>
+        </nav>
+    </header>
+
+    <!-- Main -->
+    <main>
+
+        <!-- Section 1: Image -->
+        <section id="gallery">
+            <h2>Image</h2>
+            <picture>
+                <source srcset="large.jpg" media="(min-width: 800px)">
+                <img src="small.jpg" alt="Photo">
+            </picture>
+        </section>
+
+        <!-- Section 2: Bookmarks -->
+        <section id="home">
+            <h2>Bookmarks</h2>
+            <ul>
+                <li><a href="#t1">Travel</a></li>
+                <li><a href="#t2">Photography</a></li>
+            </ul>
+        </section>
+
+        <!-- Topics -->
+        <section id="t1">
+            <h3>Travel</h3>
+        </section>
+
+        <section id="t2">
+            <h3>Photography</h3>
+        </section>
+
+    </main>
+
+
 
 	
 
