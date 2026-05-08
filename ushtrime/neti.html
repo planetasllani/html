@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Marketplace</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&amp;family=Playfair+Display:wght@700&amp;display=swap" rel="stylesheet">
+  <style>
+    html, body { height: 100%; margin: 0; }
+    * { font-family: 'DM Sans', sans-serif; }
+    .font-display { font-family: 'Playfair Display', serif; }
+    .card-hover { transition: transform 0.3s, box-shadow 0.3s; }
+    .card-hover:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(0,0,0,0.12); }
+    .fade-in { animation: fadeIn 0.6s ease forwards; opacity: 0; }
+    @keyframes fadeIn { to { opacity: 1; } }
+    .stagger-1 { animation-delay: 0.1s; }
+    .stagger-2 { animation-delay: 0.2s; }
+    .stagger-3 { animation-delay: 0.3s; }
+    .stagger-4 { animation-delay: 0.4s; }
+    .stagger-5 { animation-delay: 0.5s; }
+    .stagger-6 { animation-delay: 0.6s; }
+  </style>
+  <style>body { box-sizing: border-box; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full overflow-auto bg-[#faf8f5]">
+  <div class="w-full min-h-full">
+   <!-- Nav -->
+   <nav class="w-full px-6 py-4 flex items-center justify-between border-b border-[#e8e4df]">
+    <div class="flex items-center gap-2">
+     <div class="w-8 h-8 rounded-full bg-[#2d5d3f] flex items-center justify-center">
+      <span class="text-white text-sm font-bold">M</span>
+     </div><span class="font-bold text-[#2d5d3f] text-lg">Mear Market</span>
+    </div>
+    <div class="hidden md:flex items-center gap-6 text-sm text-[#5a5550]">
+     <a href="#" class="hover:text-[#1a1a1a] transition-colors">Browse</a> <a href="#" class="hover:text-[#1a1a1a] transition-colors">kategorit</a> <a href="#" class="hover:text-[#1a1a1a] transition-colors">shitesit</a>
+    </div>
+    <div class="flex items-center gap-3">
+     <button class="p-2 rounded-full hover:bg-[#e8e4df] transition-colors"><i data-lucide="search" class="w-5 h-5 text-[#5a5550]"></i></button> <button id="cart-btn" class="relative p-2 rounded-full hover:bg-[#e8e4df] transition-colors"><i data-lucide="shopping-bag" class="w-5 h-5 text-[#5a5550]"></i><span id="cart-count" class="absolute -top-1 -right-1 w-5 h-5 bg-[#c45d3e] text-white text-xs rounded-full flex items-center justify-center hidden">0</span></button>
+    </div>
+   </nav><!-- Hero -->
+   <section class="w-full px-6 py-16 md:py-24 text-center">
+    <h1 id="hero-title" class="font-display text-4xl md:text-6xl text-[#2d5d3f] fade-in">Mear Market</h1>
+    <p id="hero-subtitle" class="mt-4 text-[#5a5550] text-lg md:text-xl max-w-xl mx-auto fade-in stagger-1">Mir se erdhet te mear market ku gjinden te gjithen senet ushqimore dhe per shtepi.</p>
+    <div class="mt-8 flex flex-wrap justify-center gap-3 fade-in stagger-2">
+     <button class="category-btn px-5 py-2 rounded-full bg-[#2d5d3f] text-white text-sm font-medium" data-cat="all">te gjitha</button> <button class="category-btn px-5 py-2 rounded-full bg-white text-[#5a5550] text-sm font-medium border border-[#e8e4df] hover:border-[#2d5d3f] transition-colors" data-cat="home">shtepi</button> <button class="category-btn px-5 py-2 rounded-full bg-white text-[#5a5550] text-sm font-medium border border-[#e8e4df] hover:border-[#2d5d3f] transition-colors" data-cat="fashion">fashion</button><button class="category-btn px-5 py-2 rounded-full bg-white text-[#5a5550] text-sm font-medium border border-[#e8e4df] hover:border-[#2d5d3f] transition-colors" data-cat="art">figura</button> <button class="category-btn px-5 py-2 rounded-full bg-white text-[#5a5550] text-sm font-medium border border-[#e8e4df] hover:border-[#2d5d3f] transition-colors" data-cat="vintage">Vintage</button>
+    </div>
+   </section><!-- Products -->
+   <section class="w-full px-6 pb-16">
+    <div id="products-grid" class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+   </section><!-- Cart Drawer -->
+   <div id="cart-overlay" class="fixed inset-0 bg-black/40 z-40 hidden opacity-0 transition-opacity duration-300"></div>
+   <div id="cart-drawer" class="fixed top-0 right-0 h-full w-full max-w-md bg-white z-50 translate-x-full transition-transform duration-300 flex flex-col">
+    <div class="p-6 border-b border-[#e8e4df] flex items-center justify-between">
+     <h2 class="text-xl font-bold text-[#2d5d3f]">qanta</h2><button id="close-cart" class="p-2 rounded-full hover:bg-[#f0ebe5]"><i data-lucide="x" class="w-5 h-5"></i></button>
+    </div>
+    <div id="cart-items" class="flex-1 overflow-auto p-6"></div>
+    <div class="p-6 border-t border-[#e8e4df]">
+     <div class="flex justify-between mb-4"><span class="text-[#5a5550]">Totali</span><span id="cart-total" class="font-bold text-[#2d5d3f]">$0</span>
+     </div><button class="w-full py-3 bg-[#2d5d3f] text-white rounded-xl font-medium hover:bg-[#1f4029] transition-colors">kaca</button>
+    </div>
+   </div>
+  </div>
+  <script>
+    const products = [
+      { id: 1, name: "Ceramic Vase", price: 68, cat: "shtepi", color: "#d4c5b0", seller: "Studio Clay" },
+      { id: 2, name: "Linen Tote Bag", price: 45, cat: "fashion", color: "#b8c4a8", seller: "Thread & Co" },
+      { id: 3, name: "Abstract Print", price: 120, cat: "figura", color: "#c9b8d4", seller: "Form Gallery" },
+      { id: 4, name: "Brass Candle Holder", price: 54, cat: "shtepi", color: "#d4c49a", seller: "Lumière" },
+      { id: 5, name: "Vintage Silk Scarf", price: 85, cat: "vintage", color: "#d4a8a8", seller: "Retro Edit" },
+      { id: 6, name: "Hand-bound Journal", price: 38, cat: "figura", color: "#a8c4d4", seller: "Paper Trail" }
+    ];
+
+    let cart = [];
+    let activeCategory = "all";
+
+    function renderProducts() {
+      const grid = document.getElementById('products-grid');
+      const filtered = activeCategory === "all" ? products : products.filter(p => p.cat === activeCategory);
+      grid.innerHTML = filtered.map((p, i) => `
+        <div class="card-hover bg-white rounded-2xl overflow-hidden border border-[#e8e4df] fade-in stagger-${i+1}">
+          <div class="h-52 flex items-center justify-center" style="background:${p.color}20">
+            <div class="w-24 h-24 rounded-2xl" style="background:${p.color}"></div>
+          </div>
+          <div class="p-5">
+            <p class="text-xs text-[#5a5550] mb-1">${p.seller}</p>
+            <h3 class="font-bold text-[#1a1a1a]">${p.name}</h3>
+            <div class="mt-3 flex items-center justify-between">
+              <span class="font-bold text-[#1a1a1a]">$${p.price}</span>
+              <button onclick="addToCart(${p.id})" class="px-4 py-2 bg-[#2d5d3f] text-white text-sm rounded-full hover:bg-[#1f4029] transition-colors">Add</button>
+            </div>
+          </div>
+        </div>
+      `).join('');
+      lucide.createIcons();
+    }
+
+    function addToCart(id) {
+      const existing = cart.find(c => c.id === id);
+      if (existing) existing.qty++;
+      else cart.push({ id, qty: 1 });
+      updateCart();
+    }
+
+    function removeFromCart(id) {
+      cart = cart.filter(c => c.id !== id);
+      updateCart();
+    }
+
+    function updateCart() {
+      const countEl = document.getElementById('cart-count');
+      const total = cart.reduce((s, c) => s + c.qty, 0);
+      countEl.textContent = total;
+      countEl.classList.toggle('hidden', total === 0);
+
+      const itemsEl = document.getElementById('cart-items');
+      if (cart.length === 0) {
+        itemsEl.innerHTML = '<p class="text-[#5a5550] text-center mt-12">Your bag is empty</p>';
+      } else {
+        itemsEl.innerHTML = cart.map(c => {
+          const p = products.find(pr => pr.id === c.id);
+          return `<div class="flex items-center gap-4 mb-4 pb-4 border-b border-[#e8e4df]">
+            <div class="w-12 h-12 rounded-xl" style="background:${p.color}"></div>
+            <div class="flex-1"><p class="font-medium text-[#1a1a1a]">${p.name}</p><p class="text-sm text-[#5a5550]">Qty: ${c.qty}</p></div>
+            <span class="font-bold">$${p.price * c.qty}</span>
+            <button onclick="removeFromCart(${c.id})" class="p-1 hover:text-[#c45d3e]"><i data-lucide="x" class="w-4 h-4"></i></button>
+          </div>`;
+        }).join('');
+        lucide.createIcons();
+      }
+      document.getElementById('cart-total').textContent = '$' + cart.reduce((s, c) => s + c.qty * products.find(p => p.id === c.id).price, 0);
+    }
+
+    // Cart drawer
+    document.getElementById('cart-btn').addEventListener('click', () => {
+      document.getElementById('cart-drawer').classList.remove('translate-x-full');
+      const overlay = document.getElementById('cart-overlay');
+      overlay.classList.remove('hidden');
+      setTimeout(() => overlay.classList.add('opacity-100'), 10);
+    });
+    function closeCart() {
+      document.getElementById('cart-drawer').classList.add('translate-x-full');
+      const overlay = document.getElementById('cart-overlay');
+      overlay.classList.remove('opacity-100');
+      setTimeout(() => overlay.classList.add('hidden'), 300);
+    }
+    document.getElementById('close-cart').addEventListener('click', closeCart);
+    document.getElementById('cart-overlay').addEventListener('click', closeCart);
+
+    // Categories
+    document.querySelectorAll('.category-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        activeCategory = btn.dataset.cat;
+        document.querySelectorAll('.category-btn').forEach(b => { b.className = 'category-btn px-5 py-2 rounded-full bg-white text-[#5a5550] text-sm font-medium border border-[#e8e4df] hover:border-[#2d5d3f] transition-colors'; });
+        btn.className = 'category-btn px-5 py-2 rounded-full bg-[#2d5d3f] text-white text-sm font-medium';
+        renderProducts();
+      });
+    });
+
+    // Element SDK
+    const defaultConfig = {
+      hero_title: "Mear Market",
+      hero_subtitle: "Handpicked goods from independent makers and vintage collectors",
+      background_color: "#faf8f5",
+      surface_color: "#ffffff",
+      text_color: "#2d5d3f",
+      primary_action_color: "#2d5d3f",
+      secondary_action_color: "#c45d3e",
+      font_family: "DM Sans",
+      font_size: 16
+    };
+
+    window.elementSdk.init({
+      defaultConfig,
+      onConfigChange: async (config) => {
+        document.getElementById('hero-title').textContent = config.hero_title || defaultConfig.hero_title;
+        document.getElementById('hero-subtitle').textContent = config.hero_subtitle || defaultConfig.hero_subtitle;
+        document.body.style.backgroundColor = config.background_color || defaultConfig.background_color;
+        document.body.style.fontFamily = `${config.font_family || defaultConfig.font_family}, sans-serif`;
+        document.body.style.fontSize = `${config.font_size || defaultConfig.font_size}px`;
+      },
+      mapToCapabilities: (config) => ({
+        recolorables: [
+          { get: () => config.background_color || defaultConfig.background_color, set: (v) => { config.background_color = v; window.elementSdk.setConfig({ background_color: v }); } },
+          { get: () => config.surface_color || defaultConfig.surface_color, set: (v) => { config.surface_color = v; window.elementSdk.setConfig({ surface_color: v }); } },
+          { get: () => config.text_color || defaultConfig.text_color, set: (v) => { config.text_color = v; window.elementSdk.setConfig({ text_color: v }); } },
+          { get: () => config.primary_action_color || defaultConfig.primary_action_color, set: (v) => { config.primary_action_color = v; window.elementSdk.setConfig({ primary_action_color: v }); } },
+          { get: () => config.secondary_action_color || defaultConfig.secondary_action_color, set: (v) => { config.secondary_action_color = v; window.elementSdk.setConfig({ secondary_action_color: v }); } }
+        ],
+        borderables: [],
+        fontEditable: { get: () => config.font_family || defaultConfig.font_family, set: (v) => { config.font_family = v; window.elementSdk.setConfig({ font_family: v }); } },
+        fontSizeable: { get: () => config.font_size || defaultConfig.font_size, set: (v) => { config.font_size = v; window.elementSdk.setConfig({ font_size: v }); } }
+      }),
+      mapToEditPanelValues: (config) => new Map([
+        ["hero_title", config.hero_title || defaultConfig.hero_title],
+        ["hero_subtitle", config.hero_subtitle || defaultConfig.hero_subtitle]
+      ])
+    });
+
+    renderProducts();
+    updateCart();
+    lucide.createIcons();
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9f926d6380d3d0d2',t:'MTc3ODM0Nzc3Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
