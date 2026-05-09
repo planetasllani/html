@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contact Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        form {
+            background: #ffffff;
+            padding: 20px 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            width: 300px;
+        }
+
+        fieldset {
+            border: none;
+        }
+
+        legend {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        label {
+            font-size: 14px;
+            margin-top: 10px;
+            display: block;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        input:focus, textarea:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+
+        input[type="submit"] {
+            margin-top: 15px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        input:disabled {
+            background-color: #e9ecef;
+        }
+    </style>
+</head>
+<body>
+
+<form>
+    <fieldset>
+        <legend>Contact Form</legend>
+
+        <label for="firstName">First Name</label>
+        <input type="text" name="firstName" id="firstName"/>
+
+        <label for="lastName">Last Name</label>
+        <input type="text" name="lastName" id="lastName" disabled />
+
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" required>
+
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" size="50">
+
+        <label for="message">Message</label>
+        <textarea name="message" id="message" rows="5" placeholder="shkruaj diqka"></textarea>
+
+        <input type="submit" value="Submit">
+    </fieldset>
+</form>
+
+</body>
+</html>
