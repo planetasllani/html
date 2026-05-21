@@ -1,0 +1,38 @@
+h1{
+	color:green;
+	letter-spacig:10px;
+	word-spacing:50px;
+}
+
+h2{
+
+	text-align:center;
+}
+
+p{
+	font-family:;
+
+	text-indent:50px;
+}
+#mbi{
+	text-decoration:overline;
+}
+#mes{
+	text-decoration:line-through;
+}
+#poshte{
+	text-decoration:underline;
+	text-decoration-style: wavy;
+	text-decoration-color: red;
+}
+a{
+
+	text-decoration: none;
+}
+@font-face{
+	font-family:Mocha cocho;
+	scr: url("../fonts/Mocha cocho.otf");
+}
+h2{
+	font-family:Mocha cocho;
+}

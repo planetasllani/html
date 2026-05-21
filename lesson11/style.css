@@ -21,10 +21,22 @@ border-radius:20px;
 
 margin:50px 40px  30px    20px;
        top  right bottom  left
+
+margin:50px  40px    20px;
+       top   right   left
+
 margin: 50px          20px;
        top/bottom   left/right
 
 margin-top:30px;
 */
+*liman{
+background-color: yellow
+width:100px;
+height:100px ;
+margin:30px;
 
+
+
+}
 
