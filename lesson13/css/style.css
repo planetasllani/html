@@ -1,0 +1,56 @@
+ul{
+list-style-type:circle;
+list-style-image:url(../img/listat.png);
+border-left:5px solid green;
+background-color:#f1f1f1;
+padding:15px 80px;
+font-size:20px;
+margin:40px;
+}
+
+
+/*
+	list-style-image: url(../img/foto.png);
+
+	list-style-type: square, circle, disc, none
+*/
+ol{
+	list-style-type:lower greek;
+backgrounds-color:red;
+}
+/*
+	disc, armenian, circle, cjk, decimal, decimal-leading-zero, georgian, hebrew, 
+	hiragana, hiragana-iroha, katakana, katakana-iroha, lower-alpha, lower-greek,
+	lower-latin, lower-roman, none, square, upper-alpha, upper-greek, upper-latin, upper-roman 
+*/
+ol li{
+	background:#00ccff;
+	margin-left:30px;
+	margin-bottom:15px;
+	border:1px solid;
+}
+table{
+	border-collapse: collapse;
+}
+td,th{
+	border:1px solid #aaa;
+	padding:15px;
+}
+thead{
+	color:white;
+	background:#000;
+}
+tbody tr:nth-child;(odd){
+	background-color: #eee
+}
+
+tbody tr:hover{
+	background-color: #999
+	color:white;
+}
+div{
+	width:200px;
+	height:200px;
+	overflow:scroll;
+}
+/* overflow: visibile, hidden, scroll, auto, inherit */
