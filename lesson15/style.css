@@ -1,0 +1,68 @@
+div{
+	width:250px;
+	height:250px;
+	border:3px solid blue;
+	padding:20px;
+}
+/*qaty ku kemi me shkru ne HTML*/
+#static{
+	position:static; 
+}
+/*krahasohet me vetem fillestare*/
+#relative{
+	position:relative;
+}
+/* krahasohet me muret e web */
+#fixed{
+	margin:0px;
+	position:fixed;
+	right:200px;
+   right:200px;
+   top:100px;
+   }
+
+#sticky{
+	position:sticky;
+	top:0px;
+}
+
+
+#parent{
+	position:relative;
+}
+#absolute{
+	position:absolute;
+	top:70px;
+right:80px;
+width:100px;
+height:100px;
+}
+/* ------ Nav bar lesson part------ */
+
+/*  horizontal nav/menu*/
+body{
+	margin:0px;
+}
+nav ul{
+	list-style-type:none;
+	margin:0px;
+	padding:0px;
+	overflow:hidden;
+	background:#333;
+}
+nav ul li{
+	float:left;
+}
+nav ul li a{
+	display:block;
+	color:white;
+	text-align:center;
+	padding:14px 16px;
+	text-decoration:none; 
+}
+.active{
+	background:lightblue;
+}
+nav li a:hover:not(.active){
+         background:#111;
+}
