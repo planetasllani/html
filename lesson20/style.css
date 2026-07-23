@@ -54,13 +54,16 @@ nav li.active{
 	border: 0px;
 	color: white;
 }
-/*service-pjesa e gjelber*/
+
+/* service - pjesa e gjelber */
+
 #service{
 	background-color: #17c2a4;
 	min-height: 745px;
 	color: white;
 }
-/*title box */
+
+/* title box */
 .title-box{
 	text-align: center;
 	max-width: 609px;
@@ -71,40 +74,43 @@ nav li.active{
 	margin-top: 0px;
 	margin-bottom: 10px;
 	padding-top: 100px;
-	font-size:40px;
+	font-size: 40px;
 	font-weight: bold;
 }
 .title-box hr{
 	width: 87px;
 	height: 4px;
 	background-color: rgba(0, 0, 0, 0.15);
-	border:0px;
+	border: 0px;
 }
+
 /* horizontal-box */
 .horizontal-box{
-display: flex;
-margin-top: 80px;
-margin-left: auto;
-margin-right: auto;
-padding-bottom: 100px;
-width: 90%;
+	display: flex;
+	margin-top: 80px;
+	margin-left: auto;
+	margin-right: auto;
+	padding-bottom: 100px;
+	width: 90%;
 }
 .horizontal-item{
-width: 24%;
-margin-left: auto;
-margin-right:auto ;
-text-align: center;
+	width: 24%;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
 }
-..horizontal-item h2{
-font-size: 24px;
-font-weight: bold;
-margin-top: 60px;
+.horizontal-item h2{
+	font-size: 24px;
+	font-weight: bold;
+	margin-top: 60px;
 }
 .horizontal-item p{
 	font-size: 16px;
 	line-height: 26px;
 }
-/*team- pjesa e kalter e hapur */
+
+/* team - pjesa e kalter e hapur */
+
 #team{
 	background-color: #e7f1f8;
 	color: black;
@@ -114,48 +120,51 @@ margin-top: 60px;
 .horizontal-item h3{
 	color: deepskyblue;
 }
+
 /* skills - pjesa e bardhe */
+
 #skills{
 	background-color: #ffffff;
-	color:black;
+	color: black;
 	margin: 0px;
 	padding: 50px;
 }
-/* portfolio-pjesa e verdhe */
+
+/* portfolio - pjesa e verdhe */
 #portfolio{
 	background-color: #ffdd99;
 	color: black;
 	margin: 0px;
 	padding: 50px;
 }
-#portfolio-nav{
+#portfoli-nav{
 	margin-top: 50px;
 }
-#portfolio-nav li{
+#portfoli-nav li{
 	display: inline-block;
 	padding: 10px 16px;
 	background-color: #ebc985;
 	border-radius: 5px;
 }
-#portfolio-nav a{
+#portfoli-nav a{
 	text-decoration: none;
 	color: black;
 }
-#portfolio-nav li.active{
+#portfoli-nav li.active{
 	background-color: white;
 }
-/* zigzag-box*/
+
+/* zigzag-box */
 .zigzag-box{
 	display: flex;
-	margin: 88px;
+	margin: 80px;
 	margin-left: auto;
 	margin-right: auto;
 	width: 60%;
 	padding-bottom: 100px;
 	flex-wrap: wrap;
-	row-gap: 50x;
+	row-gap: 50px;
 	justify-content: center;
-
 }
 .zigzag-item{
 	width: 50%;
@@ -163,6 +172,7 @@ margin-top: 60px;
 	margin-right: auto;
 	text-align: center;
 }
+
 .zigzag-box button{
 	background-color: #17c2a4;
 	font-size: 18px;
@@ -172,37 +182,66 @@ margin-top: 60px;
 	border: 0px;
 	box-shadow: inset 0px -11px 8px -10px gray;
 }
+
+/* reviews - pjesa e kuqe */
+
 #reviews{
 	background-color: #d74680;
-	
-
+	margin: 0px;
+	padding: 50px;
 }
+.review-item{
+	display: flex;
+	align-items: center;
+	width: 50%;
+}
+.review-item .zigzag-item{
+	text-align: left;
+}
+
+/* contact - pjesa e kalter */
 
 #contact{
 	background-color: #3c5499;
-		margin: 0px;
+	margin: 0px;
 	padding: 50px;
 }
+
 .contact-form{
 	max-width: 860px;
 	margin-left: auto;
-	margin-right:auto ;
+	margin-right: auto;
 }
 .form-row{
 	display: flex;
 }
-input type="text", input type="email"{
+
+input[type="text"], input[type="email"]{
 	width: 46%;
 	height: 56px;
 }
-input type="text",input
 
+input[type="text"], input[type="email"], textarea{
+	font-family: "Titillium Web", sans-serif;
+	color: white;
+	background-color: #273a71;
+	border: none;
+	font-size: 18px;
+	margin: 16px;
+	border-radius: 5px;
+	padding-left: 26px;
+}
 
 textarea{
 	height: 200px;
 	width: 100%;
 	padding-top: 24px;
 }
+
+input[type="text"]::placeholder, input[type="email"]::placeholder, textarea::placeholder{
+	color: white;
+}
+
 input[type="button"]{
 	background-color: #30bae7;
 	border: none;
@@ -216,31 +255,30 @@ input[type="button"]{
 	color: white;
 }
 
-/* footer -pjesa e fundit */
+/* footer - pjesa e fundit */
+
 footer{
 	background-color: #344b8e;
 	margin: 0px;
 	padding: 20px;
-
 }
 #footer-nav{
-
 	max-width: 945px;
 	margin-left: auto;
 	margin-right: auto;
 }
-footer-nav{
+footer nav{
 	padding-top: 25px;
 }
 footer ul{
 	margin: 0px;
 	padding-top: 25px;
 	padding-bottom: 25px;
-	display:flex;
+	display: flex;
 }
 footer li{
-	display:inline-block;
-	padding:10px 20px 10px 20px;
+	display: inline-block;
+	padding: 10px 20px 10px 20px;
 }
 footer a{
 	text-decoration: none;
@@ -250,3 +288,6 @@ footer a{
 footer a.active{
 	color: deepskyblue;
 }
+
+
+
