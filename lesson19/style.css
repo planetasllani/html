@@ -30,12 +30,12 @@ flex-grow:1;
 
 .container{
 	display: flex;
-flex-direction:column;
+flex-direction:row;
 flex-wrap:wrap-reverse ;
 background:#7e4b95;
-justify-content:center ;/* flex-start | flex-end | center | space-between | space-around | space-evenly | start | end | left | right ... + safe | unsafe;*/
-align-item:center ;
+/*justify-content:center ;/* flex-start | flex-end | center | space-between | space-around | space-evenly | start | end | left | right ... + safe | unsafe;*/
+/*align-item:center ;*/
 }
 .container.item{
-	width: 30%;
+	width: 200px;
 }
